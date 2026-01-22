@@ -2,7 +2,7 @@
 
 
 
-const objc = require('objc')
+const objc = require('@hhas/objc')
 
 let v 
 

@@ -1,6 +1,6 @@
 #!/usr/bin/env node 
 
-const objc = require('objc')
+const objc = require('@hhas/objc')
 
 console.log(objc)
 

@@ -1,36 +1,49 @@
-# objc [![Build Status](https://img.shields.io/travis/lukaskollmer/objc.svg?style=flat-square)](https://travis-ci.org/lukaskollmer/objc) [![npm](https://img.shields.io/npm/v/objc.svg?style=flat-square)](https://www.npmjs.com/package/objc) [![node](https://img.shields.io/node/v/objc.svg?style=flat-square)](https://www.npmjs.com/package/objc)
+# @hhas/objc
 
 > NodeJS ↔ Objective-C bridge _(experimental)_
+
+## About
+
+A fork of [Lukas Kollmer's NodeJS-to-ObjC bridge](https://github.com/lukaskollmer/objc) for macOS.
+
+This is WIP/experimental. May or may not be alpha quality. Not stable. Not intended for production use.
+
+Replaces defunct `ffi` packages with [`@ffi-napi`](https://github.com/napi-ffi) packages which are maintained.
+
+Contains bug fixes, implementation improvements, and partly redesigned API with some breaking changes.
+
+This API design is not finalized and may change. E&OE, no warranty given, etc. No support may be provided.
 
 
 ## Install
 
-For now, install from: https://github.com/hhas/objc
-
 ```
-$ npm install --save objc
+$ npm install objc
 ```
 
 
 ## Usage
 
 ```js
-const objc = require('objc');
+const objc = require('@hhas/objc');
 
-const {
-  NSDate,
-  NSDateFormatter
-} = objc;
-
+const { NSDate, NSDateFormatter } = objc;
 
 let now = NSDate.date()
 let localizedDate = NSDateFormatter.localizedStringFromDate_dateStyle_timeStyle_(now, 2, 2);
 
-console.log(localizedDate); // -> "19. Apr 2022, 22:41:13"
+console.log(localizedDate); // -> [objc 22 Jan 2026 at 17:14:02]
 
 ```
 
+
+## Documentation
+
+_TO DO: update original documentation below_
+
+
 ### Topics
+
 - [API](#api)
 - [Calling Methods](#calling-methods)
 - [Inout Parameters](#inout-parameters)
@@ -47,7 +60,7 @@ console.log(localizedDate); // -> "19. Apr 2022, 22:41:13"
 Import an Objective-C framework. For example:
 
 ```js
-const objc = require('objc');
+const objc = require('@hhas/objc');
 objc.import('AppKit');
 ```
 
@@ -90,7 +103,7 @@ When calling Objective-C methods:
 For example, this JavaScript code:
 
 ```js
-const objc = require('objc');
+const objc = require('@hhas/objc');
 objc.import('AppKit');
 
 const {NSPasteboard, NSPasteboardTypeString} = objc;
@@ -146,7 +159,7 @@ The `Ref` constructor optionally takes an "in" value as argument. This can be an
 You can load ObjC constants (typically `NSString*`) just like you'd access a class:
 
 ```js
-const objc = require('objc');
+const objc = require('@hhas/objc');
 
 console.log(objc.NSFontAttributeName);   // => 'NSFont'
 ```
@@ -169,7 +182,7 @@ When creating a block, you need to explicitly declare the type encoding of the b
 **Example:** Sort an array by word length, longest to shortest
 
 ```js
-const objc = require('objc');
+const objc = require('@hhas/objc');
 
 objc.defineBlock('q@@@', 'NSComparator');
 
@@ -192,6 +205,7 @@ _TO DO: implement `wrapFunction(name,encoding)`_
 
 e.g. `NSStringFromRect`
 
+
 ### Structs
 
 _TO DO: finalize StructType implementation_
@@ -210,7 +224,7 @@ Use `new StructType(object)` to create an instance of the struct, passing an obj
 **Example:** Using structs with objc methods
 
 ```js
-const objc = require('objc');
+const objc = require('@hhas/objc');
 
 const string = objc.ns('Hello World');
 const substring = string.substringWithRange_(new objc.NSRange({location: 0, length: 5}));
@@ -225,7 +239,7 @@ _TO DO: API is not finalized_
 Use the `objc.defineClass` function to register a custom class with the Objective-C runtime:
 
 ```js
-const objc = require('objc');
+const objc = require('@hhas/objc');
 
 const LKGreeter = objc.defineClass('LKGreeter', 'NSObject', {
   // define the ObjC type encodings
@@ -254,7 +268,9 @@ To define class methods, prefix the method name with `$`, e.g.:
 
 **Note:** You might have to specify individual offsets in the type encoding, see [this example](/examples/delegate.js).
 
+
 ## Roadmap
+
 In the future, I'd like to add support for:
 - varargs
 - c-style arrays, unions as method parameter/return type
@@ -262,5 +278,7 @@ In the future, I'd like to add support for:
 - improved class creation api
 - thread-safe
 
+
 ## License
+
 MIT © [Lukas Kollmer](https://lukaskollmer.me)

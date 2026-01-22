@@ -16,8 +16,8 @@
 
 const util = require('util');
 
-const ffi = require('ffi-napi');
-const ref = require('ref-napi');
+const ffi = require('@napi-ffi/ffi-napi');
+const ref = require('@napi-ffi/ref-napi');
 
 const constants = require('./constants'); 
 const runtime = require('./runtime');

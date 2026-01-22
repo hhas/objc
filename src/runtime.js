@@ -2,8 +2,8 @@
 
 const util = require('util');
 
-const ffi = require('ffi-napi');
-const ref = require('ref-napi');
+const ffi = require('@napi-ffi/ffi-napi');
+const ref = require('@napi-ffi/ref-napi');
 
 
 const dlfcn = new ffi.Library(null, {

@@ -47,9 +47,9 @@ note that bridgesupport defines each argument and return type separately; thus t
 
 
 
-const ffi = require('ffi-napi');
-const ref = require('ref-napi');
-const StructType = require('ref-struct-di')(ref);
+const ffi = require('@napi-ffi/ffi-napi');
+const ref = require('@napi-ffi/ref-napi');
+const StructType = require('@napi-ffi/ref-struct-di')(ref);
 
 const constants = require('./constants');
 const runtime = require('./runtime');
