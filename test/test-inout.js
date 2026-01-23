@@ -1,7 +1,7 @@
 #!/usr/bin/env node 
 
 const ref = require('@napi-ffi/ref-napi')
-const objc = require('@hhas/objc')
+const objc = require('@hhas01/objc')
 
 //let v = objc.NSString.stringWithString_('')
 

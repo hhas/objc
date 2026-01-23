@@ -1,5 +1,5 @@
 {
-  "name": "@hhas/objc",
+  "name": "@hhas01/objc",
   "version": "0.25.0",
   "description": "NodeJS ↔ Objective-C bridge",
   "license": "MIT",

@@ -1,6 +1,6 @@
 #!/usr/bin/env node 
 
-const objc = require('@hhas/objc')
+const objc = require('@hhas01/objc')
 
 /*
 // these are defined in index.js

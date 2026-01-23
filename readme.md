@@ -1,4 +1,4 @@
-# @hhas/objc
+# @hhas01/objc
 
 > NodeJS ↔ Objective-C bridge _(experimental)_
 
@@ -25,7 +25,7 @@ $ npm install objc
 ## Usage
 
 ```js
-const objc = require('@hhas/objc');
+const objc = require('@hhas01/objc');
 
 const { NSDate, NSDateFormatter } = objc;
 
@@ -60,7 +60,7 @@ _TO DO: update original documentation below_
 Import an Objective-C framework. For example:
 
 ```js
-const objc = require('@hhas/objc');
+const objc = require('@hhas01/objc');
 objc.import('AppKit');
 ```
 
@@ -103,7 +103,7 @@ When calling Objective-C methods:
 For example, this JavaScript code:
 
 ```js
-const objc = require('@hhas/objc');
+const objc = require('@hhas01/objc');
 objc.import('AppKit');
 
 const {NSPasteboard, NSPasteboardTypeString} = objc;
@@ -159,7 +159,7 @@ The `Ref` constructor optionally takes an "in" value as argument. This can be an
 You can load ObjC constants (typically `NSString*`) just like you'd access a class:
 
 ```js
-const objc = require('@hhas/objc');
+const objc = require('@hhas01/objc');
 
 console.log(objc.NSFontAttributeName);   // => 'NSFont'
 ```
@@ -182,7 +182,7 @@ When creating a block, you need to explicitly declare the type encoding of the b
 **Example:** Sort an array by word length, longest to shortest
 
 ```js
-const objc = require('@hhas/objc');
+const objc = require('@hhas01/objc');
 
 objc.defineBlock('q@@@', 'NSComparator');
 
@@ -224,7 +224,7 @@ Use `new StructType(object)` to create an instance of the struct, passing an obj
 **Example:** Using structs with objc methods
 
 ```js
-const objc = require('@hhas/objc');
+const objc = require('@hhas01/objc');
 
 const string = objc.ns('Hello World');
 const substring = string.substringWithRange_(new objc.NSRange({location: 0, length: 5}));
@@ -239,7 +239,7 @@ _TO DO: API is not finalized_
 Use the `objc.defineClass` function to register a custom class with the Objective-C runtime:
 
 ```js
-const objc = require('@hhas/objc');
+const objc = require('@hhas01/objc');
 
 const LKGreeter = objc.defineClass('LKGreeter', 'NSObject', {
   // define the ObjC type encodings

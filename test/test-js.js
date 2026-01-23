@@ -1,6 +1,6 @@
 #!/usr/bin/env node 
 
-const objc = require('@hhas/objc')
+const objc = require('@hhas01/objc')
 
 /*
 Here's the error that was throwing when the method Proxy, on receiving a Symbol.toPrimitive key, tried to return self[Symbol.toPrimitive] - the resulting method's 'this' was being rebound to the Proxy, not to the ObjCClass which actually owned that method; the solution is for the Proxy always to return a function closure that it creates itself, which correctly captures the underlying ObjCObject as 'self', because 'this' cannot be left to its own devices - whether due to Proxy's own magic behavior or JS's general sloppiness as to what 'this' actually points to in any given context - 
